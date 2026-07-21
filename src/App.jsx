@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import CustomCursor from './components/CustomCursor';
 
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 const copy = {
   en: {
     nav: ['Intermission', 'Film', 'Archive', 'About'],
@@ -47,7 +49,6 @@ const copy = {
         title: 'Gathered volume',
         text: 'A draped skirt study that gathers around the body, then lets the volume fall away.',
       },
-      ['Study 02 / Detail', 'Drape and tension'],
     ],
     aboutLabel: 'Mathilde Folcher',
     aboutTitle: 'Born in Toulouse. Creating in Lisbon.',
@@ -112,13 +113,13 @@ const copy = {
 };
 
 const gallery = [
-  '/images/tangle-01.jpg',
-  '/images/tangle-02.jpg',
-  '/images/tangle-03.jpg',
-  '/images/tangle-04.jpg',
-  '/images/tangle-bts.jpg',
-  '/images/tangle-05.jpg',
-  '/images/tangle-06.jpg',
+  asset('/images/tangle-01.jpg'),
+  asset('/images/tangle-02.jpg'),
+  asset('/images/tangle-03.jpg'),
+  asset('/images/tangle-04.jpg'),
+  asset('/images/tangle-bts.jpg'),
+  asset('/images/tangle-05.jpg'),
+  asset('/images/tangle-06.jpg'),
 ];
 
 function Header({ language, setLanguage, t }) {
@@ -149,7 +150,7 @@ function Hero({ t }) {
     <section className="hero" id="top">
       <img
         className="hero__photo"
-        src="/images/tangle-05.jpg"
+        src={asset('/images/tangle-05.jpg')}
         alt="Model wearing the Tangle Dress in Lisbon"
       />
       <div className="media-grain" />
@@ -291,11 +292,11 @@ function Archive({ t }) {
           </div>
           <div className="archive-work__images">
             <figure>
-              <img src="/images/archive-denim.jpg" alt={denim.title} />
+              <img src={asset('/images/archive-denim.jpg')} alt={denim.title} />
               <figcaption>Front / process image</figcaption>
             </figure>
             <figure>
-              <img src="/images/archive-denim-detail.jpg" alt={`${denim.title} detail`} />
+              <img src={asset('/images/archive-denim-detail.jpg')} alt={`${denim.title} detail`} />
               <figcaption>Detail / reconstructed pocket</figcaption>
             </figure>
           </div>
@@ -308,11 +309,11 @@ function Archive({ t }) {
           </div>
           <div className="archive-work__images">
             <figure>
-              <img src="/images/archive-drape-01.jpg" alt={drape.title} />
+              <img src={asset('/images/archive-drape-01.jpg')} alt={drape.title} />
               <figcaption>Full form / process image</figcaption>
             </figure>
             <figure>
-              <img src="/images/archive-drape-02.jpg" alt={`${drape.title} detail`} />
+              <img src={asset('/images/archive-drape-02.jpg')} alt={`${drape.title} detail`} />
               <figcaption>Detail / gathered construction</figcaption>
             </figure>
           </div>
@@ -371,12 +372,12 @@ export default function App() {
         <Mood t={t} />
         <Film
           id="film"
-          src="/videos/tangle-film-01.mp4"
+          src={asset('/videos/tangle-film-01.mp4')}
           label={t.filmOneLabel}
           title={t.filmOneTitle}
         />
         <HorizontalStory t={t} />
-        <Film src="/videos/tangle-film-02.mp4" label={t.filmTwoLabel} title={t.filmTwoTitle} />
+        <Film src={asset('/videos/tangle-film-02.mp4')} label={t.filmTwoLabel} title={t.filmTwoTitle} />
         <Archive t={t} />
         <About t={t} />
       </main>
