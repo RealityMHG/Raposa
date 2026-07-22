@@ -12,9 +12,11 @@ const copy = {
     moodLabel: 'Collection 001 / Visual research',
     moodTitle: 'The night before the piece.',
     moodText: [
-      'Intermission begins with tension rather than nostalgia. It borrows the charge of a club floor, a flash-lit corridor and the moment just before someone leaves.',
-      'Feminine codes are kept close—lace, pink, exposed skin—but never left untouched. They are pulled apart by denim, hardware, uneven lines and the need to move.',
-      'The collection lives between delicacy and disruption: intimate, unfinished and slightly unruly.',
+      'Intermission captures the energy between getting dressed and disappearing into the night. It belongs to the girl who’s already halfway out the door—lip gloss on, headphones in, dressed instinctively rather than perfectly. The moment before everything begins.',
+      'Rooted in the nostalgia of the early 2000s, the collection reinterprets familiar references through a contemporary lens. Instead of recreating the past, it borrows its confidence, excess and spontaneity, transforming them into something personal and new.',
+      'Delicate lace, sheer layers and body-conscious silhouettes meet distressed denim, belts, eyelets and industrial hardware. Classic wardrobe staples become the foundation for expressive, maximalist styling, where timeless pieces are disrupted by bold details and unexpected combinations.',
+      'Rather than chasing perfection, the garments embrace layering, asymmetry and visible construction. They feel collected over time, worn, altered and made to move—balancing softness with attitude, intimacy with confidence, and femininity with rebellion.',
+      'The result is nostalgic without feeling dated, unapologetically feminine, slightly chaotic and impossible to ignore.',
     ],
     filmOneLabel: 'Intermission / Film 01',
     filmOneTitle: 'A dress that refuses to stay still.',
@@ -49,6 +51,11 @@ const copy = {
         title: 'Gathered volume',
         text: 'A draped skirt study that gathers around the body, then lets the volume fall away.',
       },
+      {
+        number: '03',
+        title: 'Newspaper print',
+        text: 'A shirt study built around graphic repetition, contrast and an easy, oversized silhouette.',
+      },
     ],
     aboutLabel: 'Mathilde Folcher',
     aboutTitle: 'Born in Toulouse. Creating in Lisbon.',
@@ -65,9 +72,11 @@ const copy = {
     moodLabel: 'Coleção 001 / Pesquisa visual',
     moodTitle: 'A noite antes da peça.',
     moodText: [
-      'Intermission começa na tensão e não na nostalgia. Parte da energia de uma pista de dança, de um corredor iluminado por flash e do instante antes de alguém sair.',
-      'Os códigos femininos ficam próximos—renda, rosa, pele exposta—mas nunca intactos. São desfeitos pela ganga, pelas ferragens, pelas linhas irregulares e pela necessidade de movimento.',
-      'A coleção vive entre a delicadeza e a perturbação: íntima, inacabada e ligeiramente indomável.',
+      'Intermission capta a energia entre vestir-se e desaparecer na noite. Pertence à rapariga que já está a meio caminho da porta—com brilho nos lábios, auscultadores postos e vestida por instinto, não por perfeição. O instante antes de tudo começar.',
+      'Enraizada na nostalgia dos primeiros anos 2000, a coleção reinterpreta referências familiares através de uma lente contemporânea. Em vez de recriar o passado, apropria-se da sua confiança, excesso e espontaneidade, transformando-os em algo pessoal e novo.',
+      'Renda delicada, camadas transparentes e silhuetas que acompanham o corpo encontram ganga desgastada, cintos, ilhós e ferragens industriais. Peças clássicas de guarda-roupa tornam-se a base de um styling expressivo e maximalista, onde elementos intemporais são interrompidos por detalhes fortes e combinações inesperadas.',
+      'Em vez de procurar a perfeição, as peças abraçam a sobreposição, a assimetria e a construção visível. Parecem reunidas ao longo do tempo, usadas, alteradas e feitas para se mover—equilibrando suavidade e atitude, intimidade e confiança, feminilidade e rebeldia.',
+      'O resultado é nostálgico sem parecer datado, assumidamente feminino, ligeiramente caótico e impossível de ignorar.',
     ],
     filmOneLabel: 'Intermission / Filme 01',
     filmOneTitle: 'Um vestido que se recusa a ficar quieto.',
@@ -101,6 +110,11 @@ const copy = {
         number: '02',
         title: 'Volume franzido',
         text: 'Um estudo de saia drapeada que se reúne no corpo e depois deixa o volume cair.',
+      },
+      {
+        number: '03',
+        title: 'Estampado de jornal',
+        text: 'Um estudo de camisa construído através da repetição gráfica, do contraste e de uma silhueta ampla e descontraída.',
       },
     ],
     aboutLabel: 'Mathilde Folcher',
@@ -180,7 +194,9 @@ function Mood({ t }) {
         <p className="micro">{t.moodLabel}</p>
         <h2>{t.moodTitle}</h2>
         <div className="mood__text">
-          {t.moodText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {t.moodText.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </div>
     </section>
@@ -274,7 +290,7 @@ function HorizontalStory({ t }) {
 }
 
 function Archive({ t }) {
-  const [denim, drape] = t.archiveWorks;
+  const [denim, drape, print] = t.archiveWorks;
 
   return (
     <section className="archive" id="archive">
@@ -318,6 +334,27 @@ function Archive({ t }) {
             </figure>
           </div>
         </article>
+        <article className="archive-work archive-work--print reveal">
+          <div className="archive-work__heading">
+            <span>{print.number}</span>
+            <h3>{print.title}</h3>
+            <p>{print.text}</p>
+          </div>
+          <div className="archive-work__images archive-work__images--three">
+            <figure>
+              <img src={asset('/images/archive-print-01.jpg')} alt={print.title} />
+              <figcaption>Frame 01 / shirt study</figcaption>
+            </figure>
+            <figure>
+              <img src={asset('/images/archive-print-02.jpg')} alt={`${print.title} back`} />
+              <figcaption>Frame 02 / back view</figcaption>
+            </figure>
+            <figure>
+              <img src={asset('/images/archive-print-03.jpg')} alt={`${print.title} detail`} />
+              <figcaption>Frame 03 / front detail</figcaption>
+            </figure>
+          </div>
+        </article>
       </div>
     </section>
   );
@@ -331,7 +368,7 @@ function About({ t }) {
         <p className="micro">{t.aboutLabel}</p>
         <h2>{t.aboutTitle}</h2>
         <p>{t.aboutText}</p>
-        <a href="https://www.instagram.com/mathildefolcher" target="_blank" rel="noreferrer">
+        <a href="https://www.instagram.com/mathilde_dfr" target="_blank" rel="noreferrer">
           {t.follow} <span>↗</span>
         </a>
       </div>
@@ -377,14 +414,18 @@ export default function App() {
           title={t.filmOneTitle}
         />
         <HorizontalStory t={t} />
-        <Film src={asset('/videos/tangle-film-02.mp4')} label={t.filmTwoLabel} title={t.filmTwoTitle} />
+        <Film
+          src={asset('/videos/tangle-film-02.mp4')}
+          label={t.filmTwoLabel}
+          title={t.filmTwoTitle}
+        />
         <Archive t={t} />
         <About t={t} />
       </main>
       <footer>
         <p>© {new Date().getFullYear()} Mathilde Folcher</p>
         <p>{t.footer}</p>
-        <a href="https://www.instagram.com/mathildefolcher" target="_blank" rel="noreferrer">
+        <a href="https://www.instagram.com/mathilde_dfr" target="_blank" rel="noreferrer">
           Instagram ↗
         </a>
       </footer>

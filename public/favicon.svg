@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#151319"/>
+  <text x="8" y="41" fill="#faf8f2" font-family="Arial Black, Arial, sans-serif" font-size="29" font-weight="800" letter-spacing="-4">MF</text>
+  <path fill="#d8ce50" d="m52 10 2.3 7.7L62 20l-7.7 2.3L52 30l-2.3-7.7L42 20l7.7-2.3z"/>
+</svg>
