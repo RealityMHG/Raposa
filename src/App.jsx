@@ -5,7 +5,7 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 const copy = {
   en: {
-    nav: ['Intermission', 'Film', 'Archive', 'About'],
+    nav: ['About', 'Archive', 'Intermission', 'Film'],
     eyebrow: 'Independent fashion designer · Lisbon',
     heroLine: 'Portfolio',
     scroll: 'Enter Intermission',
@@ -47,24 +47,24 @@ const copy = {
     filmTwoLabel: 'Intermission / Film 02',
     filmTwoTitle: 'Between takes, the piece becomes alive.',
     archiveLabel: 'Early studies / Before Intermission',
-    archiveTitle: 'Before the first look.',
+    archiveTitle: 'Before the first collection took shape.',
     archiveText:
       'Earlier pieces trace the beginning of Mathilde’s language—upcycled denim, improvised volume and garments shaped directly on the body.',
     archiveWorks: [
       {
         number: '01',
-        title: 'Newspaper shirt',
-        text: 'A shirt study built around graphic repetition, contrast and an easy, oversized silhouette.',
+        title: 'Atelier techniques',
+        text: 'An oversized newspaper-print shirt developed through graphic repetition, contrast and atelier construction techniques.',
       },
       {
         number: '02',
-        title: 'Gathered skirt',
-        text: 'A draped skirt study that gathers around the body, then lets the volume fall away.',
+        title: 'Exploratory project',
+        text: 'An exploratory draped-skirt project, studying how fabric gathers around the body before letting the volume fall away.',
       },
       {
         number: '03',
-        title: 'Reconstructed denim top',
-        text: 'Upcycled denim panels, asymmetric construction and an exposed pocket language.',
+        title: 'Upcycling',
+        text: 'An upcycling exercise in reconstructed denim, using asymmetric panels and exposed pockets to create a new top.',
       },
     ],
     aboutLabel: 'Mathilde Folcher',
@@ -75,7 +75,7 @@ const copy = {
     footer: 'Independent fashion designer',
   },
   pt: {
-    nav: ['Intermission', 'Filme', 'Arquivo', 'Sobre'],
+    nav: ['Sobre', 'Arquivo', 'Intermission', 'Filme'],
     eyebrow: 'Designer de moda independente · Lisboa',
     heroLine: 'Portefólio',
     scroll: 'Entrar em Intermission',
@@ -117,24 +117,24 @@ const copy = {
     filmTwoLabel: 'Intermission / Filme 02',
     filmTwoTitle: 'Entre takes, a peça ganha vida.',
     archiveLabel: 'Primeiros estudos / Antes de Intermission',
-    archiveTitle: 'Antes do primeiro look.',
+    archiveTitle: 'Antes de a primeira coleção ganhar forma.',
     archiveText:
       'As primeiras peças revelam o início da linguagem de Mathilde—ganga reconstruída, volume improvisado e roupa moldada diretamente no corpo.',
     archiveWorks: [
       {
         number: '01',
-        title: 'Camisa de jornal',
-        text: 'Um estudo de camisa construído através da repetição gráfica, do contraste e de uma silhueta ampla e descontraída.',
+        title: 'Técnicas de atelier',
+        text: 'Uma camisa oversized com estampado de jornal, desenvolvida através de repetição gráfica, contraste e técnicas de construção de atelier.',
       },
       {
         number: '02',
-        title: 'Saia franzida',
-        text: 'Um estudo de saia drapeada que se reúne no corpo e depois deixa o volume cair.',
+        title: 'Projeto exploratório',
+        text: 'Um projeto exploratório de saia drapeada, que estuda a forma como o tecido se reúne no corpo antes de deixar o volume cair.',
       },
       {
         number: '03',
-        title: 'Top de ganga reconstruída',
-        text: 'Painéis de ganga reaproveitada, construção assimétrica e uma linguagem de bolsos expostos.',
+        title: 'Upcycling',
+        text: 'Um exercício de upcycling em ganga reconstruída, que usa painéis assimétricos e bolsos expostos para criar um novo top.',
       },
     ],
     aboutLabel: 'Mathilde Folcher',
@@ -163,10 +163,10 @@ function Header({ language, setLanguage, t }) {
         MF<span>✦</span>
       </a>
       <nav aria-label="Main navigation">
-        <a href="#intermission">{t.nav[0]}</a>
-        <a href="#film">{t.nav[1]}</a>
-        <a href="#archive">{t.nav[2]}</a>
-        <a href="#about">{t.nav[3]}</a>
+        <a href="#introduction">{t.nav[0]}</a>
+        <a href="#archive">{t.nav[1]}</a>
+        <a href="#intermission">{t.nav[2]}</a>
+        <a href="#film">{t.nav[3]}</a>
       </nav>
       <button
         className="language"
@@ -221,13 +221,18 @@ function Mood({ t }) {
 function Introduction({ t }) {
   return (
     <section className="introduction" id="introduction">
+      <figure className="introduction__portrait">
+        <img src={asset('/images/introduction-street.jpeg')} alt="Mathilde Folcher in Lisbon" />
+      </figure>
       <div className="introduction__copy reveal">
         <p className="micro">{t.introductionLabel}</p>
         <h2>{t.introductionTitle}</h2>
-        <div className="introduction__text">
-          {t.introductionText.split('\n\n').map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <div className="introduction__body">
+          <div className="introduction__text">
+            {t.introductionText.split('\n\n').map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -454,6 +459,7 @@ export default function App() {
         <Hero t={t} />
         <Introduction t={t} />
         <PersonalStyle t={t} />
+        <Archive t={t} />
         <Mood t={t} />
         <Film
           id="film"
@@ -467,7 +473,6 @@ export default function App() {
           label={t.filmTwoLabel}
           title={t.filmTwoTitle}
         />
-        <Archive t={t} />
         <About t={t} />
       </main>
       <footer>
