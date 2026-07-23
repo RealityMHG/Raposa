@@ -7,8 +7,18 @@ const copy = {
   en: {
     nav: ['Intermission', 'Film', 'Archive', 'About'],
     eyebrow: 'Independent fashion designer · Lisbon',
-    heroLine: 'Clothes caught between softness and unrest.',
+    heroLine: 'Portfolio',
     scroll: 'Enter Intermission',
+    introductionLabel: 'Introduction',
+    introductionTitle: 'Fashion is my voice.',
+    introductionText:
+      'For me, fashion is an outlet to express myself and communicate with the world without having to say anything. Fashion Design—and upcycling in particular—is something I am deeply passionate about. I want to show people that this approach allows for great creativity and sustainability.\n\nBeyond graduating in Fashion Design, I want to specialise in styling. Translating ideas and concepts into wearable art is something I believe could be my greatest superpower. Above all, I want to express myself through clothing and help others do the same.',
+    styleLabel: 'Personal style / Point of view',
+    styleText: [
+      'I have a very distinctive personal style. I am drawn to Y2K, maximalist, grunge and punk influences. At the same time, I want to raise awareness of the importance of investing in timeless, high-quality pieces that last.',
+      'Within more alternative styles, basic pieces are often undervalued, when in fact they help to build more interesting looks and provide a starting point for creating more complex pieces.',
+      'Ultimately, I believe in the importance of a good canvas.',
+    ],
     moodLabel: 'Collection 001 / Visual research',
     moodTitle: 'The night before the piece.',
     moodText: [
@@ -37,24 +47,24 @@ const copy = {
     filmTwoLabel: 'Intermission / Film 02',
     filmTwoTitle: 'Between takes, the piece becomes alive.',
     archiveLabel: 'Early studies / Before Intermission',
-    archiveTitle: 'The road into the work.',
+    archiveTitle: 'Before the first look.',
     archiveText:
       'Earlier pieces trace the beginning of Mathilde’s language—upcycled denim, improvised volume and garments shaped directly on the body.',
     archiveWorks: [
       {
         number: '01',
-        title: 'Reconstructed denim',
-        text: 'Upcycled denim panels, asymmetric construction and an exposed pocket language.',
+        title: 'Newspaper shirt',
+        text: 'A shirt study built around graphic repetition, contrast and an easy, oversized silhouette.',
       },
       {
         number: '02',
-        title: 'Gathered volume',
+        title: 'Gathered skirt',
         text: 'A draped skirt study that gathers around the body, then lets the volume fall away.',
       },
       {
         number: '03',
-        title: 'Newspaper print',
-        text: 'A shirt study built around graphic repetition, contrast and an easy, oversized silhouette.',
+        title: 'Reconstructed denim top',
+        text: 'Upcycled denim panels, asymmetric construction and an exposed pocket language.',
       },
     ],
     aboutLabel: 'Mathilde Folcher',
@@ -67,8 +77,18 @@ const copy = {
   pt: {
     nav: ['Intermission', 'Filme', 'Arquivo', 'Sobre'],
     eyebrow: 'Designer de moda independente · Lisboa',
-    heroLine: 'Roupa suspensa entre suavidade e inquietação.',
+    heroLine: 'Portefólio',
     scroll: 'Entrar em Intermission',
+    introductionLabel: 'Introdução',
+    introductionTitle: 'A moda é a minha voz.',
+    introductionText:
+      'Para mim, a moda é um outlet para me expressar e comunicar ao mundo sem precisar de dizer nada. O Design de Moda e, em específico, o upcycling são algo de que gosto muito e quero mostrar às pessoas que esta vertente nos permite grande criatividade e sustentabilidade.\n\nPara além de me formar em Design de Moda, quero especializar-me em styling. Traduzir ideias e conceitos em arte portável e usável é algo que acredito possa ser o meu maior superpoder. Quero, sobretudo, poder expressar-me através da roupa e poder ajudar os outros com o mesmo.',
+    styleLabel: 'Estilo pessoal / Ponto de vista',
+    styleText: [
+      'Tenho um estilo muito próprio. Gosto das vertentes do Y2K, maximalismo, grunge e punk. No entanto, quero consciencializar as pessoas para a importância de investir em peças intemporais, de qualidade e que durem.',
+      'Nos estilos mais alternativos, peças básicas são muitas vezes subvalorizadas, quando na verdade ajudam muito quer a construir looks mais interessantes, quer como ponto de partida para a elaboração de peças mais complexas.',
+      'No fundo, acredito na importância de um bom canvas.',
+    ],
     moodLabel: 'Coleção 001 / Pesquisa visual',
     moodTitle: 'A noite antes da peça.',
     moodText: [
@@ -97,24 +117,24 @@ const copy = {
     filmTwoLabel: 'Intermission / Filme 02',
     filmTwoTitle: 'Entre takes, a peça ganha vida.',
     archiveLabel: 'Primeiros estudos / Antes de Intermission',
-    archiveTitle: 'O caminho até ao trabalho.',
+    archiveTitle: 'Antes do primeiro look.',
     archiveText:
       'As primeiras peças revelam o início da linguagem de Mathilde—ganga reconstruída, volume improvisado e roupa moldada diretamente no corpo.',
     archiveWorks: [
       {
         number: '01',
-        title: 'Ganga reconstruída',
-        text: 'Painéis de ganga reaproveitada, construção assimétrica e uma linguagem de bolsos expostos.',
+        title: 'Camisa de jornal',
+        text: 'Um estudo de camisa construído através da repetição gráfica, do contraste e de uma silhueta ampla e descontraída.',
       },
       {
         number: '02',
-        title: 'Volume franzido',
+        title: 'Saia franzida',
         text: 'Um estudo de saia drapeada que se reúne no corpo e depois deixa o volume cair.',
       },
       {
         number: '03',
-        title: 'Estampado de jornal',
-        text: 'Um estudo de camisa construído através da repetição gráfica, do contraste e de uma silhueta ampla e descontraída.',
+        title: 'Top de ganga reconstruída',
+        text: 'Painéis de ganga reaproveitada, construção assimétrica e uma linguagem de bolsos expostos.',
       },
     ],
     aboutLabel: 'Mathilde Folcher',
@@ -174,11 +194,6 @@ function Hero({ t }) {
         <span>Folcher</span>
       </h1>
       <p className="hero__line">{t.heroLine}</p>
-      <div className="hero__stamp" aria-hidden="true">
-        INTER
-        <br />
-        MISSION
-      </div>
       <a className="hero__scroll" href="#intermission">
         <span>↓</span>
         {t.scroll}
@@ -195,6 +210,37 @@ function Mood({ t }) {
         <h2>{t.moodTitle}</h2>
         <div className="mood__text">
           {t.moodText.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Introduction({ t }) {
+  return (
+    <section className="introduction" id="introduction">
+      <div className="introduction__copy reveal">
+        <p className="micro">{t.introductionLabel}</p>
+        <h2>{t.introductionTitle}</h2>
+        <div className="introduction__text">
+          {t.introductionText.split('\n\n').map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PersonalStyle({ t }) {
+  return (
+    <section className="personal-style">
+      <div className="personal-style__copy reveal">
+        <p className="micro">{t.styleLabel}</p>
+        <div className="personal-style__text">
+          {t.styleText.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
@@ -290,7 +336,7 @@ function HorizontalStory({ t }) {
 }
 
 function Archive({ t }) {
-  const [denim, drape, print] = t.archiveWorks;
+  const [shirt, skirt, top] = t.archiveWorks;
 
   return (
     <section className="archive" id="archive">
@@ -300,58 +346,58 @@ function Archive({ t }) {
         <p>{t.archiveText}</p>
       </div>
       <div className="archive__works">
-        <article className="archive-work archive-work--denim reveal">
+        <article className="archive-work archive-work--print reveal">
           <div className="archive-work__heading">
-            <span>{denim.number}</span>
-            <h3>{denim.title}</h3>
-            <p>{denim.text}</p>
+            <span>{shirt.number}</span>
+            <h3>{shirt.title}</h3>
+            <p>{shirt.text}</p>
           </div>
-          <div className="archive-work__images">
+          <div className="archive-work__images archive-work__images--three">
             <figure>
-              <img src={asset('/images/archive-denim.jpg')} alt={denim.title} />
-              <figcaption>Front / process image</figcaption>
+              <img src={asset('/images/archive-print-01.jpg')} alt={shirt.title} />
+              <figcaption>Frame 01 / shirt study</figcaption>
             </figure>
             <figure>
-              <img src={asset('/images/archive-denim-detail.jpg')} alt={`${denim.title} detail`} />
-              <figcaption>Detail / reconstructed pocket</figcaption>
+              <img src={asset('/images/archive-print-02.jpg')} alt={`${shirt.title} back`} />
+              <figcaption>Frame 02 / back view</figcaption>
+            </figure>
+            <figure>
+              <img src={asset('/images/archive-print-03.jpg')} alt={`${shirt.title} detail`} />
+              <figcaption>Frame 03 / front detail</figcaption>
             </figure>
           </div>
         </article>
         <article className="archive-work archive-work--drape reveal">
           <div className="archive-work__heading">
-            <span>{drape.number}</span>
-            <h3>{drape.title}</h3>
-            <p>{drape.text}</p>
+            <span>{skirt.number}</span>
+            <h3>{skirt.title}</h3>
+            <p>{skirt.text}</p>
           </div>
           <div className="archive-work__images">
             <figure>
-              <img src={asset('/images/archive-drape-01.jpg')} alt={drape.title} />
+              <img src={asset('/images/archive-drape-01.jpg')} alt={skirt.title} />
               <figcaption>Full form / process image</figcaption>
             </figure>
             <figure>
-              <img src={asset('/images/archive-drape-02.jpg')} alt={`${drape.title} detail`} />
+              <img src={asset('/images/archive-drape-02.jpg')} alt={`${skirt.title} detail`} />
               <figcaption>Detail / gathered construction</figcaption>
             </figure>
           </div>
         </article>
-        <article className="archive-work archive-work--print reveal">
+        <article className="archive-work archive-work--denim reveal">
           <div className="archive-work__heading">
-            <span>{print.number}</span>
-            <h3>{print.title}</h3>
-            <p>{print.text}</p>
+            <span>{top.number}</span>
+            <h3>{top.title}</h3>
+            <p>{top.text}</p>
           </div>
-          <div className="archive-work__images archive-work__images--three">
+          <div className="archive-work__images">
             <figure>
-              <img src={asset('/images/archive-print-01.jpg')} alt={print.title} />
-              <figcaption>Frame 01 / shirt study</figcaption>
+              <img src={asset('/images/archive-denim.jpg')} alt={top.title} />
+              <figcaption>Front / process image</figcaption>
             </figure>
             <figure>
-              <img src={asset('/images/archive-print-02.jpg')} alt={`${print.title} back`} />
-              <figcaption>Frame 02 / back view</figcaption>
-            </figure>
-            <figure>
-              <img src={asset('/images/archive-print-03.jpg')} alt={`${print.title} detail`} />
-              <figcaption>Frame 03 / front detail</figcaption>
+              <img src={asset('/images/archive-denim-detail.jpg')} alt={`${top.title} detail`} />
+              <figcaption>Detail / reconstructed pocket</figcaption>
             </figure>
           </div>
         </article>
@@ -381,7 +427,7 @@ function About({ t }) {
 }
 
 export default function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('pt');
   const t = copy[language];
 
   useEffect(() => {
@@ -406,6 +452,8 @@ export default function App() {
       <Header language={language} setLanguage={setLanguage} t={t} />
       <main>
         <Hero t={t} />
+        <Introduction t={t} />
+        <PersonalStyle t={t} />
         <Mood t={t} />
         <Film
           id="film"
