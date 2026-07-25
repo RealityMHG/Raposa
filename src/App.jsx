@@ -117,7 +117,7 @@ const copy = {
     filmTwoLabel: 'YOUTH / Filme 02',
     filmTwoTitle: 'Entre takes, a peça ganha vida.',
     archiveLabel: 'Primeiros estudos / Antes de YOUTH',
-    archiveTitle: 'Antes de a primeira coleção ganhar forma.',
+    archiveTitle: 'Antes da primeira coleção ganhar forma.',
     archiveText:
       'As minhas primeiras peças revelam o início da minha linguagem criativa—ganga reconstruída, volumes improvisados e peças moldadas diretamente sobre o corpo.',
     archiveWorks: [
@@ -567,16 +567,20 @@ function Archive({ t }) {
             <h3>{skirt.title}</h3>
             <p>{skirt.text}</p>
           </div>
-          <div className="archive-work__images">
+              <div className="archive-work__images archive-work__images--three">
             <figure>
               <img src={asset('/images/archive-drape-01.jpg')} alt={skirt.title} />
               <figcaption>Full form / process image</figcaption>
             </figure>
-            <figure>
-              <img src={asset('/images/archive-drape-02.jpg')} alt={`${skirt.title} detail`} />
-              <figcaption>Detail / gathered construction</figcaption>
-            </figure>
-          </div>
+                <figure>
+                  <img src={asset('/images/archive-drape-02.jpg')} alt={`${skirt.title} detail`} />
+                  <figcaption>Detail / gathered construction</figcaption>
+                </figure>
+                <figure>
+                  <img src={asset('/images/archive-drape-03.webp')} alt={`${skirt.title} initial study`} />
+                  <figcaption>Back side / initial skirt study</figcaption>
+                </figure>
+              </div>
         </article>
         <article className="archive-work archive-work--denim reveal">
           <div className="archive-work__heading">
