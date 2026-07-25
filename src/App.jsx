@@ -5,10 +5,10 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 const copy = {
   en: {
-    nav: ['About', 'Archive', 'Intermission', 'Film'],
+    nav: ['About', 'Archive', 'YOUTH', 'Film'],
     eyebrow: 'Independent fashion designer · Lisbon',
     heroLine: 'Portfolio',
-    scroll: 'Enter Intermission',
+    scroll: 'Enter YOUTH',
     introductionLabel: 'Introduction',
     introductionTitle: 'Fashion is my voice.',
     introductionText:
@@ -22,13 +22,13 @@ const copy = {
     moodLabel: 'Collection 001 / Visual research',
     moodTitle: 'The night before the piece.',
     moodText: [
-      'Intermission captures the energy between getting dressed and disappearing into the night. It belongs to the girl who’s already halfway out the door—lip gloss on, headphones in, dressed instinctively rather than perfectly. The moment before everything begins.',
-      'Rooted in the nostalgia of the early 2000s, the collection reinterprets familiar references through a contemporary lens. Instead of recreating the past, it borrows its confidence, excess and spontaneity, transforming them into something personal and new.',
-      'Delicate lace, sheer layers and body-conscious silhouettes meet distressed denim, belts, eyelets and industrial hardware. Classic wardrobe staples become the foundation for expressive, maximalist styling, where timeless pieces are disrupted by bold details and unexpected combinations.',
-      'Rather than chasing perfection, the garments embrace layering, asymmetry and visible construction. They feel collected over time, worn, altered and made to move—balancing softness with attitude, intimacy with confidence, and femininity with rebellion.',
-      'The result is nostalgic without feeling dated, unapologetically feminine, slightly chaotic and impossible to ignore.',
+      'The YOUTH collection is born from a deeply musical heritage passed down by my parents, who have always encouraged me to live without fear of taking risks, connecting with others and taking up space.',
+      'Inspired by the irreverent energy of youth in the 2000s—as well as the icons of the era: Britney, Paramore, Pamela Anderson and Daft Punk—it seeks to bring back rebellion, courage and resistance against conservatism, something so intrinsic to youth.',
+      'It combines a maximalist, Y2K, alternative and feminine aesthetic to create duality and show the possibility of coexistence.',
+      'It also seeks to question social isolation and the resulting fear of connection, so characteristic of today’s youth.',
+      'It is an invitation to return to our roots, to the night, to dance, to freedom of expression and to the connection between people.',
     ],
-    filmOneLabel: 'Intermission / Film 01',
+    filmOneLabel: 'YOUTH / Film 01',
     filmOneTitle: 'A dress that refuses to stay still.',
     pieceLabel: 'Main piece / 001',
     pieceTitle: 'The Tangle Dress',
@@ -44,9 +44,9 @@ const copy = {
       'Distance',
       'After movement',
     ],
-    filmTwoLabel: 'Intermission / Film 02',
+    filmTwoLabel: 'YOUTH / Film 02',
     filmTwoTitle: 'Between takes, the piece becomes alive.',
-    archiveLabel: 'Early studies / Before Intermission',
+    archiveLabel: 'Early studies / Before YOUTH',
     archiveTitle: 'Before the first collection took shape.',
     archiveText:
       'Earlier pieces trace the beginning of Mathilde’s language—upcycled denim, improvised volume and garments shaped directly on the body.',
@@ -75,10 +75,10 @@ const copy = {
     footer: 'Independent fashion designer',
   },
   pt: {
-    nav: ['Sobre', 'Arquivo', 'Intermission', 'Filme'],
+    nav: ['Sobre', 'Arquivo', 'YOUTH', 'Filme'],
     eyebrow: 'Designer de moda independente · Lisboa',
     heroLine: 'Portefólio',
-    scroll: 'Entrar em Intermission',
+    scroll: 'Entrar em YOUTH',
     introductionLabel: 'Introdução',
     introductionTitle: 'A moda é a minha voz.',
     introductionText:
@@ -92,13 +92,13 @@ const copy = {
     moodLabel: 'Coleção 001 / Pesquisa visual',
     moodTitle: 'A noite antes da peça.',
     moodText: [
-      'Intermission capta a energia entre vestir-se e desaparecer na noite. Pertence à rapariga que já está a meio caminho da porta—com brilho nos lábios, auscultadores postos e vestida por instinto, não por perfeição. O instante antes de tudo começar.',
-      'Enraizada na nostalgia dos primeiros anos 2000, a coleção reinterpreta referências familiares através de uma lente contemporânea. Em vez de recriar o passado, apropria-se da sua confiança, excesso e espontaneidade, transformando-os em algo pessoal e novo.',
-      'Renda delicada, camadas transparentes e silhuetas que acompanham o corpo encontram ganga desgastada, cintos, ilhós e ferragens industriais. Peças clássicas de guarda-roupa tornam-se a base de um styling expressivo e maximalista, onde elementos intemporais são interrompidos por detalhes fortes e combinações inesperadas.',
-      'Em vez de procurar a perfeição, as peças abraçam a sobreposição, a assimetria e a construção visível. Parecem reunidas ao longo do tempo, usadas, alteradas e feitas para se mover—equilibrando suavidade e atitude, intimidade e confiança, feminilidade e rebeldia.',
-      'O resultado é nostálgico sem parecer datado, assumidamente feminino, ligeiramente caótico e impossível de ignorar.',
+      'Esta coleção YOUTH nasce de uma herança profundamente musical, dada pelos meus pais, que sempre me incentivaram a viver sem medo de arriscar, conectar e ocupar espaço.',
+      'Inspirada na energia irreverente da juventude dos anos 2000—assim como nos ícones da altura: Britney, Paramore, Pamela Anderson e Daft Punk—tenta trazer de volta a rebeldia, a coragem e a revolta contra o conservadorismo, algo tão próprio da juventude.',
+      'Combina uma estética maximalista, Y2K, alternativa e feminina para criar dualidade e mostrar a possibilidade de coexistência.',
+      'Procura também questionar o isolamento social e o consequente receio de conexão, tão característico da juventude atual.',
+      'É um convite a voltar às raízes, à noite, à dança, à liberdade de expressão e à ligação entre pessoas.',
     ],
-    filmOneLabel: 'Intermission / Filme 01',
+    filmOneLabel: 'YOUTH / Filme 01',
     filmOneTitle: 'Um vestido que se recusa a ficar quieto.',
     pieceLabel: 'Peça principal / 001',
     pieceTitle: 'The Tangle Dress',
@@ -114,9 +114,9 @@ const copy = {
       'Distância',
       'Depois do movimento',
     ],
-    filmTwoLabel: 'Intermission / Filme 02',
+    filmTwoLabel: 'YOUTH / Filme 02',
     filmTwoTitle: 'Entre takes, a peça ganha vida.',
-    archiveLabel: 'Primeiros estudos / Antes de Intermission',
+    archiveLabel: 'Primeiros estudos / Antes de YOUTH',
     archiveTitle: 'Antes de a primeira coleção ganhar forma.',
     archiveText:
       'As primeiras peças revelam o início da linguagem de Mathilde—ganga reconstruída, volume improvisado e roupa moldada diretamente no corpo.',
@@ -156,6 +156,23 @@ const gallery = [
   asset('/images/tangle-06.jpg'),
 ];
 
+const collectionSketches = [
+  asset('/images/collection-sketch-01.webp'),
+  asset('/images/collection-sketch-02.webp'),
+  asset('/images/collection-sketch-03.webp'),
+  asset('/images/collection-sketch-04.webp'),
+  asset('/images/collection-sketch-05.webp'),
+];
+
+const coloredCollectionSketches = [
+  asset('/images/collection-color-01.webp'),
+  asset('/images/collection-color-02.webp'),
+  asset('/images/collection-color-03.webp'),
+  asset('/images/collection-color-04.webp'),
+  asset('/images/collection-color-05.webp'),
+  asset('/images/collection-color-06.webp'),
+];
+
 function Header({ language, setLanguage, t }) {
   return (
     <header className="header">
@@ -165,7 +182,7 @@ function Header({ language, setLanguage, t }) {
       <nav aria-label="Main navigation">
         <a href="#introduction">{t.nav[0]}</a>
         <a href="#archive">{t.nav[1]}</a>
-        <a href="#intermission">{t.nav[2]}</a>
+        <a href="#youth">{t.nav[2]}</a>
         <a href="#film">{t.nav[3]}</a>
       </nav>
       <button
@@ -194,7 +211,7 @@ function Hero({ t }) {
         <span>Folcher</span>
       </h1>
       <p className="hero__line">{t.heroLine}</p>
-      <a className="hero__scroll" href="#intermission">
+      <a className="hero__scroll" href="#youth">
         <span>↓</span>
         {t.scroll}
       </a>
@@ -204,7 +221,7 @@ function Hero({ t }) {
 
 function Mood({ t }) {
   return (
-    <section className="mood" id="intermission">
+    <section className="mood" id="youth">
       <div className="mood__copy reveal">
         <p className="micro">{t.moodLabel}</p>
         <h2>{t.moodTitle}</h2>
@@ -214,6 +231,34 @@ function Mood({ t }) {
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+function CollectionSketches() {
+  return (
+    <section
+      className="collection-sketches"
+      id="collection-sketches"
+      aria-label="Final collection sketches"
+    >
+      {collectionSketches.map((image, index) => (
+        <figure className={`collection-sketch collection-sketch--${index + 1}`} key={image}>
+          <img src={image} alt={`Final collection look ${index + 1}`} />
+        </figure>
+      ))}
+    </section>
+  );
+}
+
+function ColoredCollectionSketches() {
+  return (
+    <section className="colored-sketches" aria-label="Colored collection sketches">
+      {coloredCollectionSketches.map((image, index) => (
+        <figure className="colored-sketch" key={image}>
+          <img src={image} alt={`Colored collection look ${index + 1}`} />
+        </figure>
+      ))}
     </section>
   );
 }
@@ -461,6 +506,8 @@ export default function App() {
         <PersonalStyle t={t} />
         <Archive t={t} />
         <Mood t={t} />
+        <CollectionSketches />
+        <ColoredCollectionSketches />
         <Film
           id="film"
           src={asset('/videos/tangle-film-01.mp4')}

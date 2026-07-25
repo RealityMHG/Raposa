@@ -77,6 +77,42 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .mood__text p:first-child { color: var(--wine); }
 .mood__text p:last-child { align-self: end; color: var(--wine); font-family: var(--serif); font-size: clamp(23px, 2.1vw, 34px); line-height: 1.02; }
 
+.collection-sketches {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 220px));
+  gap: clamp(16px, 2.25vw, 38px);
+  justify-content: center;
+  align-items: start;
+  padding: clamp(60px, 7vw, 100px) var(--gutter) clamp(90px, 10vw, 150px);
+  background: var(--paper);
+  overflow: hidden;
+}
+.collection-sketch { margin: 0; }
+.collection-sketch img {
+  height: auto;
+  max-height: 68svh;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.colored-sketches {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 165px));
+  gap: clamp(14px, 1.8vw, 30px);
+  justify-content: center;
+  align-items: start;
+  padding: clamp(20px, 3vw, 45px) var(--gutter) clamp(90px, 10vw, 150px);
+  background: var(--paper);
+  overflow: hidden;
+}
+.colored-sketch { margin: 0; }
+.colored-sketch img {
+  height: auto;
+  max-height: 58svh;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
 .film { position: relative; height: 100svh; min-height: 620px; overflow: hidden; background: #08070a; color: var(--white); }
 .film video { width: 100%; height: 100%; object-fit: cover; filter: saturate(.67) contrast(1.2) brightness(.7); }
 .film__shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(5,4,7,.75), transparent 55%), linear-gradient(90deg, rgba(5,4,7,.35), transparent 50%); }
@@ -179,6 +215,31 @@ footer a:hover, footer a:focus-visible { background: var(--ink); border-color: v
   .mood__copy h2 { font-size: 20vw; line-height: .76; }
   .mood__text { grid-template-columns: 1fr; gap: 22px; padding-left: 14vw; }
   .mood__text p:last-child { margin-top: 18px; }
+  .collection-sketches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12vw 4vw;
+    padding-top: 25px;
+  }
+  .collection-sketch--1,
+  .collection-sketch--2,
+  .collection-sketch--3,
+  .collection-sketch--4,
+  .collection-sketch--5 {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .collection-sketch--2,
+  .collection-sketch--4 { margin-top: 18vw; }
+  .collection-sketch--5 {
+    grid-column: 1 / -1;
+    width: 53%;
+    margin: -1vw auto 0;
+  }
+  .colored-sketches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9vw 4vw;
+    padding-top: 10px;
+  }
   .film video { object-position: center; }
   .film__caption h2 { font-size: 11vw; }
   .story { height: 470vh; }
