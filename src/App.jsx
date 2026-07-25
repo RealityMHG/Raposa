@@ -311,7 +311,20 @@ function Film({ src, label, title, id }) {
 
   return (
     <section className="film" id={id}>
-      <video ref={videoRef} src={src} autoPlay muted loop playsInline preload="metadata" />
+      <video
+        ref={videoRef}
+        src={src}
+        poster={
+          src.includes('01')
+            ? asset('/images/tangle-05.jpg')
+            : asset('/images/tangle-bts.jpg')
+        }
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
       <div className="media-grain" />
       <div className="film__shade" />
       <div className="film__caption">
@@ -467,6 +480,55 @@ function Manifesto() {
   );
 }
 
+function PrintCv() {
+  return (
+    <section className="print-cv" aria-label="Currículo de Mathilde Folcher">
+      <div className="print-cv__identity">
+        <p className="micro">Currículo / 2026</p>
+        <h2>
+          Mathilde
+          <span>Folcher</span>
+        </h2>
+        <p className="print-cv__role">Fashion Designer · Lisboa</p>
+      </div>
+      <div className="print-cv__details">
+        <article>
+          <span>01</span>
+          <h3>Formação</h3>
+          <p>Design de Moda</p>
+          <p>Gestão de Recursos Humanos</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Experiência</h3>
+          <p>Atendimento ao cliente nos cinemas UCI</p>
+          <p>Colaboração em editorial de moda</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Competências</h3>
+          <p>Adobe Illustrator · Costura</p>
+          <p>Modelagem · Desenho</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Línguas</h3>
+          <p>Português · Inglês · Francês</p>
+        </article>
+        <article className="print-cv__contact">
+          <span>05</span>
+          <h3>Contactos</h3>
+          <p>mathildecfolcher@gmail.com</p>
+          <p>+351 910 757 773</p>
+          <p>Lisboa, Portugal</p>
+          <p>mathildefolcher.com</p>
+        </article>
+      </div>
+      <p className="print-cv__footer">YOUTH · PORTFOLIO 2026</p>
+    </section>
+  );
+}
+
 function Archive({ t }) {
   const [shirt, skirt, top] = t.archiveWorks;
 
@@ -604,6 +666,7 @@ export default function App() {
         />
         <Manifesto />
         <About t={t} />
+        <PrintCv />
       </main>
       <footer>
         <p>© {new Date().getFullYear()} Mathilde Folcher</p>
