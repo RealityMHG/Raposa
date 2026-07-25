@@ -20,10 +20,10 @@ const copy = {
       'Ultimately, I believe in the importance of a good canvas.',
     ],
     moodLabel: 'Collection 001 / Visual research',
-    moodTitle: 'The night before the piece.',
+    moodTitle: 'YOUTH',
     moodText: [
       'The YOUTH collection is born from a deeply musical heritage passed down by my parents, who have always encouraged me to live without fear of taking risks, connecting with others and taking up space.',
-      'Inspired by the irreverent energy of youth in the 2000s—as well as the icons of the era: Britney, Paramore, Pamela Anderson and Daft Punk—it seeks to bring back rebellion, courage and resistance against conservatism, something so intrinsic to youth.',
+      'Inspired by the irreverent energy of youth in the 2000s—as well as the icons of the era: Britney Spears, Paramore, Pamela Anderson, Daft Punk, etc.—it seeks to bring back rebellion, courage and resistance against conservatism, something so intrinsic to youth.',
       'It combines a maximalist, Y2K, alternative and feminine aesthetic to create duality and show the possibility of coexistence.',
       'It also seeks to question social isolation and the resulting fear of connection, so characteristic of today’s youth.',
       'It is an invitation to return to our roots, to the night, to dance, to freedom of expression and to the connection between people.',
@@ -33,7 +33,7 @@ const copy = {
     pieceLabel: 'Main piece / 001',
     pieceTitle: 'The Tangle Dress',
     pieceText:
-      'A halter dress built through tension: dark denim, translucent pink lace, white trims and a metal ring. Its loose lengths knot, trail and redraw the silhouette with every movement.',
+      'I created this halter dress through the tension between dark denim, translucent pink lace, white trims and a metal ring. Its loose lengths knot, trail and redraw the silhouette with every movement.',
     galleryLabel: 'Scroll to follow the movement',
     frames: [
       'First light',
@@ -49,7 +49,7 @@ const copy = {
     archiveLabel: 'Early studies / Before YOUTH',
     archiveTitle: 'Before the first collection took shape.',
     archiveText:
-      'Earlier pieces trace the beginning of Mathilde’s language—upcycled denim, improvised volume and garments shaped directly on the body.',
+      'My earliest pieces reveal the beginnings of my creative language—reconstructed denim, improvised volumes and garments shaped directly on the body.',
     archiveWorks: [
       {
         number: '01',
@@ -90,10 +90,10 @@ const copy = {
       'No fundo, acredito na importância de um bom canvas.',
     ],
     moodLabel: 'Coleção 001 / Pesquisa visual',
-    moodTitle: 'A noite antes da peça.',
+    moodTitle: 'YOUTH',
     moodText: [
       'Esta coleção YOUTH nasce de uma herança profundamente musical, dada pelos meus pais, que sempre me incentivaram a viver sem medo de arriscar, conectar e ocupar espaço.',
-      'Inspirada na energia irreverente da juventude dos anos 2000—assim como nos ícones da altura: Britney, Paramore, Pamela Anderson e Daft Punk—tenta trazer de volta a rebeldia, a coragem e a revolta contra o conservadorismo, algo tão próprio da juventude.',
+      'Inspirada na energia irreverente da juventude dos anos 2000—assim como nos ícones da altura: Britney Spears, Paramore, Pamela Anderson, Daft Punk, etc.—tenta trazer de volta a rebeldia, a coragem e a revolta contra o conservadorismo, algo tão próprio da juventude.',
       'Combina uma estética maximalista, Y2K, alternativa e feminina para criar dualidade e mostrar a possibilidade de coexistência.',
       'Procura também questionar o isolamento social e o consequente receio de conexão, tão característico da juventude atual.',
       'É um convite a voltar às raízes, à noite, à dança, à liberdade de expressão e à ligação entre pessoas.',
@@ -103,7 +103,7 @@ const copy = {
     pieceLabel: 'Peça principal / 001',
     pieceTitle: 'The Tangle Dress',
     pieceText:
-      'Um vestido halter construído através da tensão: ganga escura, renda rosa translúcida, acabamentos brancos e uma argola metálica. As tiras soltas entrelaçam-se, arrastam-se e redesenham a silhueta a cada movimento.',
+      'Criei este vestido halter através da tensão entre ganga escura, renda rosa translúcida, acabamentos brancos e uma argola metálica. As tiras soltas entrelaçam-se, arrastam-se e redesenham a silhueta a cada movimento.',
     galleryLabel: 'Desliza para seguir o movimento',
     frames: [
       'Primeira luz',
@@ -119,7 +119,7 @@ const copy = {
     archiveLabel: 'Primeiros estudos / Antes de YOUTH',
     archiveTitle: 'Antes de a primeira coleção ganhar forma.',
     archiveText:
-      'As primeiras peças revelam o início da linguagem de Mathilde—ganga reconstruída, volume improvisado e roupa moldada diretamente no corpo.',
+      'As minhas primeiras peças revelam o início da minha linguagem criativa—ganga reconstruída, volumes improvisados e peças moldadas diretamente sobre o corpo.',
     archiveWorks: [
       {
         number: '01',
@@ -324,62 +324,144 @@ function Film({ src, label, title, id }) {
 }
 
 function HorizontalStory({ t }) {
-  const sectionRef = useRef(null);
-  const trackRef = useRef(null);
-  const [offset, setOffset] = useState(0);
+  const viewportRef = useRef(null);
 
   useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
-    const update = () => {
-      const section = sectionRef.current;
-      const track = trackRef.current;
-      if (!section || !track) return;
-      const rect = section.getBoundingClientRect();
-      const distance = section.offsetHeight - window.innerHeight;
-      const progress = distance > 0 ? Math.min(1, Math.max(0, -rect.top / distance)) : 0;
-      setOffset(progress * Math.max(0, track.scrollWidth - window.innerWidth));
+    let previousTime = 0;
+    let resumeAt = 0;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    const pauseAutoRotation = () => {
+      resumeAt = performance.now() + 1800;
     };
-    const requestUpdate = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
+
+    const keepInsideLoop = () => {
+      if (reducedMotion.matches) return;
+      const loopPoint = viewport.scrollWidth / 2;
+      if (!loopPoint) return;
+      if (viewport.scrollLeft >= loopPoint) viewport.scrollLeft -= loopPoint;
     };
-    update();
-    window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', requestUpdate);
+
+    const animate = (time) => {
+      if (!previousTime) previousTime = time;
+      if (!reducedMotion.matches && time >= resumeAt && !dragging) {
+        viewport.scrollLeft += (time - previousTime) * 0.035;
+        keepInsideLoop();
+      }
+      previousTime = time;
+      frame = requestAnimationFrame(animate);
+    };
+
+    const onWheel = (event) => {
+      const movement =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      if (!movement) return;
+      event.preventDefault();
+      pauseAutoRotation();
+      viewport.scrollLeft += movement;
+      keepInsideLoop();
+    };
+
+    const onPointerDown = (event) => {
+      dragging = true;
+      dragStartX = event.clientX;
+      dragStartScroll = viewport.scrollLeft;
+      pauseAutoRotation();
+      viewport.classList.add('is-dragging');
+      viewport.setPointerCapture(event.pointerId);
+    };
+
+    const onPointerMove = (event) => {
+      if (!dragging) return;
+      viewport.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+      keepInsideLoop();
+    };
+
+    const onPointerUp = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      pauseAutoRotation();
+      viewport.classList.remove('is-dragging');
+      if (viewport.hasPointerCapture(event.pointerId)) {
+        viewport.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    viewport.addEventListener('wheel', onWheel, { passive: false });
+    viewport.addEventListener('pointerdown', onPointerDown);
+    viewport.addEventListener('pointermove', onPointerMove);
+    viewport.addEventListener('pointerup', onPointerUp);
+    viewport.addEventListener('pointercancel', onPointerUp);
+    frame = requestAnimationFrame(animate);
+
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', requestUpdate);
-      window.removeEventListener('resize', requestUpdate);
+      viewport.removeEventListener('wheel', onWheel);
+      viewport.removeEventListener('pointerdown', onPointerDown);
+      viewport.removeEventListener('pointermove', onPointerMove);
+      viewport.removeEventListener('pointerup', onPointerUp);
+      viewport.removeEventListener('pointercancel', onPointerUp);
     };
   }, []);
 
   return (
-    <section className="story" ref={sectionRef} aria-label="Tangle Dress editorial sequence">
-      <div className="story__sticky">
-        <div className="story__heading">
-          <p className="micro">{t.pieceLabel}</p>
-          <h2>{t.pieceTitle}</h2>
-          <p>{t.pieceText}</p>
-        </div>
-        <div
-          className="story__rail"
-          ref={trackRef}
-          style={{ transform: `translate3d(-${offset}px, 0, 0)` }}
-        >
-          {gallery.map((image, index) => (
-            <figure className={`story-card story-card--${index + 1}`} key={image}>
-              <img src={image} alt={`${t.pieceTitle} editorial frame ${index + 1}`} />
-              <figcaption>
-                <span>0{index + 1}</span>
-                {t.frames[index]}
-              </figcaption>
-            </figure>
+    <section className="story" aria-label="Tangle Dress editorial sequence">
+      <div className="story__heading">
+        <p className="micro">{t.pieceLabel}</p>
+        <h2>{t.pieceTitle}</h2>
+        <p>{t.pieceText}</p>
+      </div>
+      <div className="story__viewport" ref={viewportRef}>
+        <div className="story__rail">
+          {[false, true].map((duplicate) => (
+            <div
+              className="story__group"
+              aria-hidden={duplicate ? 'true' : undefined}
+              key={duplicate ? 'duplicate' : 'original'}
+            >
+              {gallery.map((image, index) => (
+                <figure
+                  className={`story-card story-card--${index + 1}`}
+                  key={`${duplicate ? 'duplicate' : 'original'}-${image}`}
+                >
+                  <img
+                    src={image}
+                    alt={duplicate ? '' : `${t.pieceTitle} editorial frame ${index + 1}`}
+                    draggable="false"
+                  />
+                  <figcaption>
+                    <span>0{index + 1}</span>
+                    {t.frames[index]}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           ))}
-          <div className="story__end">
-            <span>↘</span>
-            <p>{t.galleryLabel}</p>
-          </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Manifesto() {
+  return (
+    <section className="manifesto" aria-label="YOUTH collection manifesto">
+      <div className="manifesto__scrap">
+        <span className="manifesto__star manifesto__star--one" aria-hidden="true">✦</span>
+        <span className="manifesto__star manifesto__star--two" aria-hidden="true">✦</span>
+        <p className="manifesto__lead">
+          Clothes caught between
+          <strong>boldness</strong>
+          <em>and Feminity</em>
+        </p>
+        <p className="manifesto__statement">Unapologetic</p>
       </div>
     </section>
   );
@@ -520,6 +602,7 @@ export default function App() {
           label={t.filmTwoLabel}
           title={t.filmTwoTitle}
         />
+        <Manifesto />
         <About t={t} />
       </main>
       <footer>
